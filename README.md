@@ -1,2 +1,2 @@
 # utils
-A collection of C++ utilities
+A collection of C++ utilities.
