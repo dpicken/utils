@@ -8,16 +8,19 @@ namespace assert {
 class SourceLocation {
 public:
   constexpr SourceLocation(const char* file, int line) noexcept
-    : file(file)
-    , line(line) {
+    : m_file(file)
+    , m_line(line) {
   }
 
-  const char* const file;
-  const int line;
+  friend std::ostream& operator<<(std::ostream&, const SourceLocation&);
+
+private:
+  const char* const m_file;
+  const int m_line;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const SourceLocation& sourceLocation) {
-  return os << sourceLocation.file << ":" << sourceLocation.line;
+  return os << sourceLocation.m_file << ":" << sourceLocation.m_line;
 }
 
 } // namespace assert

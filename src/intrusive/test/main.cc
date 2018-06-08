@@ -6,8 +6,8 @@
 namespace {
 
 struct ListEntry {
-  explicit ListEntry(char id)
-    : id(id) {
+  explicit ListEntry(char i)
+    : id(i) {
   }
 
   char id;
