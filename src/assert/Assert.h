@@ -35,7 +35,7 @@
 /**
  * Debug-only asserts that provide a descriptive failure message.
  *
- * Arguments are evaluated once.
+ * Arguments are evaluated once in a debug build, or, not at all in a release build.
  */
 #ifdef NDEBUG
 #define ASSERT(assertion) ((void) 0)

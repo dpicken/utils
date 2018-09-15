@@ -1,6 +1,6 @@
 #include "testAssertWithoutNDEBUG.h"
 
-#include "expectChildAborts.h"
+#include "assert/verifyChildProcess.h"
 
 #undef NDEBUG
 #include "assert/Assert.h"
@@ -12,21 +12,21 @@ void assert::test::testAssertWithoutNDEBUG() {
   if (fork() == 0) {
     ASSERT(false);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_EQ(true, true);
   if (fork() == 0) {
     ASSERT_EQ(true, false);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_NE(true, false);
   if (fork() == 0) {
     ASSERT_NE(true, true);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_LE(0, 1);
@@ -34,7 +34,7 @@ void assert::test::testAssertWithoutNDEBUG() {
   if (fork() == 0) {
     ASSERT_LE(2, 1);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_GE(2, 1);
@@ -42,20 +42,20 @@ void assert::test::testAssertWithoutNDEBUG() {
   if (fork() == 0) {
     ASSERT_GE(0, 1);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_LT(0, 1);
   if (fork() == 0) {
     ASSERT_LT(0, 0);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 
   ASSERT_GT(1, 0);
   if (fork() == 0) {
     ASSERT_GT(0, 0);
   } else {
-    expectChildAborts();
+    assert::verifyChildProcessAborts();
   }
 }
